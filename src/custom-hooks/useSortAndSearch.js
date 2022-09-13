@@ -11,7 +11,7 @@ export const useSort = (posts, sort) => {
 
     return sortedPost;
 }
-// 
+ 
 export const useSearch = (posts, sort, search) => {
     const sortedPost = useSort(posts, sort);
 

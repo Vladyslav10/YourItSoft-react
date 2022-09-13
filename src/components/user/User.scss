@@ -6,6 +6,14 @@
     padding: 75px 10px;
     background-color: #333348;
     border-radius: 40px;
+
+    &.active {
+        padding: 44px 10px;
+        & > button {
+            padding: 16px 38px;
+        }
+    }
+
     & > p {
         width: 100%;
         overflow: hidden;

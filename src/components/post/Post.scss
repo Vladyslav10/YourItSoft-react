@@ -1,0 +1,29 @@
+.post {
+    
+    &:not(:last-child) {
+        margin: 0px 0px 30px 0px;
+    }
+
+    &__title {
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 125%;
+        margin: 0px 0px 20px 0px;
+    }
+
+    &__text {
+        font-size: 18px;
+        line-height: 122%;
+        padding: 0px 0px 30px 0px;
+        position: relative;
+        &::after{
+            content:'';
+            background-color: #4C4C6A;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 1px;
+            width: 100%;
+        }
+    }
+}

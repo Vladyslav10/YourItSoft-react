@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setSearchQuery, setSortActive } from '../../reducers/usersReducer';
 import './Header.scss';
 
-const Header = (props) => {
+const Header = () => {
     const dispatch = useDispatch();
     const searchQuery = useSelector(state => state.users.searchQuery);
     const sortActive = useSelector((state) => state.users.sortActive);
