@@ -54,6 +54,7 @@
     }
 
     &__bottom-prev {
+        cursor: pointer;
         display: flex;
         align-items: center;
         & > p {
@@ -62,6 +63,7 @@
     }
 
     &__bottom-next {
+        cursor: pointer;
         display: flex;
         align-items: center;
         & > p {

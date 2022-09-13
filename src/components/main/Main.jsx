@@ -4,7 +4,7 @@ import arRight from '../../assets/right.png';
 import { useDispatch, useSelector } from "react-redux";
 import { useSearch } from "../../custom-hooks/useSortAndSearch";
 import { setIsPostActive } from "../../reducers/postsReducer";
-import { setNumberOfPages } from "../../reducers/usersReducer";
+import { setCurrentPage, setNumberOfPages } from "../../reducers/usersReducer";
 import { getNumberOfUsers, getUsers } from "../actions/users";
 import Post from "../post/Post";
 import User from "../user/User";
@@ -26,7 +26,7 @@ const Main = () => {
   const isFetching = useSelector((state) => state.users.isFetching);
   const isPostFetchError = useSelector((state) => state.posts.isPostFetchError);
   const isPostFetching = useSelector((state) => state.posts.isPostFetching);
-  
+  const numberOfPages = useSelector((state) => state.users.numberOfpages);
 
   const searchedPost = useSearch(users, sortActive, searchQuery);
 
@@ -38,6 +38,24 @@ const Main = () => {
   useEffect(() => {
     dispatch(getUsers(currentPage, perPage));
   }, [currentPage]);
+
+  function nextPage() {
+    dispatch(setIsPostActive(false))
+    if(currentPage < numberOfPages) {
+      dispatch(setCurrentPage(currentPage + 1))
+    } else {
+      dispatch(setCurrentPage(1))
+    }
+  }
+
+  function prevPage() {
+    dispatch(setIsPostActive(false))
+    if(currentPage > 1 ) {
+      dispatch(setCurrentPage(currentPage - 1))
+    } else {
+      dispatch(setCurrentPage(3))
+    }
+  }
   
   return (
     <main className="main">
@@ -47,9 +65,9 @@ const Main = () => {
             Ooops something wrong! Please reload page!
           </p>
         )}
+        {isFetching && <div className="loader"></div>}
         <div className={isPostsActive ? "main__row small" : "main__row"}>
             <div className="main__column main__column-users">
-                {isFetching && <div className="loader"></div>}
                 {isFetching === false && !searchedPost.length 
                     ? <h2 className="user-error">Posts not Found</h2>
                     : searchedPost.map(user => <User key={user.id} user={user}/>)
@@ -70,11 +88,11 @@ const Main = () => {
         </div>
         {!isFetching && (
           <div className="main__bottom">
-            <div className="main__bottom-prev">
+            <div onClick={()=> prevPage()} className="main__bottom-prev">
               <img src={arLeft} alt="arrow left"/>
               <p className="main__bottom-text">Previous</p>
             </div>
-            <div className="main__bottom-next">
+            <div onClick={()=> nextPage()} className="main__bottom-next">
               <p className="main__bottom-text">Next</p>
               <img src={arRight} alt="arrow right"/>
             </div>
