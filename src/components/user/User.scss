@@ -1,0 +1,31 @@
+.user {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    line-height: 125%;
+    padding: 75px 10px;
+    background-color: #333348;
+    border-radius: 40px;
+    & > p {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    
+
+    &__zipcode {
+        margin: 0px 0px 30px 0px;
+    }
+
+    &__btn {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        color: inherit;
+        align-items: center;
+        padding: 20px 44px;
+        background-color: #52519D;
+        border-radius: 40px;
+    }
+}

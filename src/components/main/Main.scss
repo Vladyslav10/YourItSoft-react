@@ -1,0 +1,63 @@
+.main {
+
+    &__row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0px 0px 50px 0px;
+    }
+
+    &__row.small {
+        justify-content: space-between;
+    }
+
+    &__column-users {
+        flex: 0 1 59.184%;
+        display: grid;
+        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(294px, 420px));
+        justify-content: center;
+    }
+
+    &__column-posts.disabled {
+        display: none;
+    }
+
+    &__bottom {
+    }
+}
+
+.alert {
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    color: red;
+}
+
+.user-error {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.loader {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 30px auto 0px auto;
+    border: 2px dashed green;
+    animation-name: search-fetching;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+  
+@keyframes search-fetching {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(-360deg);
+    }
+}
