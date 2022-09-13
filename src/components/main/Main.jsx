@@ -4,7 +4,7 @@ import arRight from '../../assets/right.png';
 import { useDispatch, useSelector } from "react-redux";
 import { useSearch } from "../../custom-hooks/useSortAndSearch";
 import { setIsPostActive } from "../../reducers/postsReducer";
-import { setCurrentPage, setNumberOfPages } from "../../reducers/usersReducer";
+import { setCurrentPage } from "../../reducers/usersReducer";
 import { getNumberOfUsers, getUsers } from "../actions/users";
 import Post from "../post/Post";
 import User from "../user/User";
@@ -18,7 +18,6 @@ const Main = () => {
   const sortActive = useSelector((state) => state.users.sortActive);
   const searchQuery = useSelector(state => state.users.searchQuery);
 
-  const totalCount = useSelector((state) => state.users.totalCount);
   const perPage = useSelector((state) => state.users.perPage);
   const currentPage = useSelector((state) => state.users.currentPage);
 
@@ -31,8 +30,7 @@ const Main = () => {
   const searchedPost = useSearch(users, sortActive, searchQuery);
 
   useEffect(() => {
-    dispatch(getNumberOfUsers());
-    dispatch(setNumberOfPages(Math.ceil(totalCount / perPage)));
+    dispatch(getNumberOfUsers(perPage));
   }, []);
 
   useEffect(() => {
@@ -41,7 +39,7 @@ const Main = () => {
 
   function nextPage() {
     dispatch(setIsPostActive(false))
-    if(currentPage < numberOfPages) {
+    if(numberOfPages > currentPage) {
       dispatch(setCurrentPage(currentPage + 1))
     } else {
       dispatch(setCurrentPage(1))
@@ -50,10 +48,10 @@ const Main = () => {
 
   function prevPage() {
     dispatch(setIsPostActive(false))
-    if(currentPage > 1 ) {
+    if(currentPage > 1) {
       dispatch(setCurrentPage(currentPage - 1))
     } else {
-      dispatch(setCurrentPage(3))
+      dispatch(setCurrentPage(numberOfPages))
     }
   }
   

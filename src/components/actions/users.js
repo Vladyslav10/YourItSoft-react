@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {setFetchError, setIsFetching, setUsers, setTotalCount} from "../../reducers/usersReducer";
+import {setFetchError, setIsFetching, setUsers, setNumberOfPages} from "../../reducers/usersReducer";
 import {setPosts, setPostFetchError, setIsPostFetching} from '../../reducers/postsReducer';
 
 export const getUsers = (currentPage, perPage) => {
@@ -19,12 +19,12 @@ export const getUsers = (currentPage, perPage) => {
     }
 }
 
-export const getNumberOfUsers = () => {
+export const getNumberOfUsers = (perPage) => {
     
     return async (dispatch) => {
         try {
             const allUsers = await axios.get(`https://jsonplaceholder.typicode.com/users`);
-            dispatch(setTotalCount(allUsers.data.length))
+            dispatch(setNumberOfPages(Math.ceil(allUsers.data.length / perPage)))
         } catch (e) {
             dispatch(setFetchError(true))
             setTimeout(()=> {
