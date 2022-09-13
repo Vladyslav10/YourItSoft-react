@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/YourItSoft-react.github.io/static/css/main.38cb6ed7.css",
+    "main.js": "/YourItSoft-react.github.io/static/js/main.de9b7cdc.js",
+    "index.html": "/YourItSoft-react.github.io/index.html",
+    "main.38cb6ed7.css.map": "/YourItSoft-react.github.io/static/css/main.38cb6ed7.css.map",
+    "main.de9b7cdc.js.map": "/YourItSoft-react.github.io/static/js/main.de9b7cdc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.38cb6ed7.css",
+    "static/js/main.de9b7cdc.js"
+  ]
+}
