@@ -9,7 +9,7 @@
 
     &.active {
         padding: 44px 10px;
-        & > button {
+        & > .user__btn {
             padding: 16px 38px;
         }
     }
@@ -35,5 +35,27 @@
         padding: 20px 44px;
         background-color: #52519D;
         border-radius: 40px;
+    }
+}
+
+
+@media (max-width: 480px){
+    .user {
+        padding: 40px 10px;
+    
+        &.active {
+            padding: 40px 10px;
+            & > .user__btn {
+                padding: 16px 38px;
+            }
+        }
+    
+        &__zipcode {
+            margin: 0px 0px 25px 0px;
+        }
+    
+        &__btn {
+            padding: 15px 25px;
+        }
     }
 }

@@ -27,3 +27,36 @@
         }
     }
 }
+
+@media (max-width: 992px){
+    .post {
+        &:not(:last-child) {
+            margin: 0px 0px 20px 0px;
+        }
+
+        &__title {
+            font-size: 24px;
+        }
+
+        &__text {
+            font-size: 16px;
+            padding: 0px 0px 20px 0px;
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .post {
+        &:not(:last-child) {
+            margin: 0px 0px 15px 0px;
+        }
+
+        &__title {
+            font-size: 20px;
+        }
+
+        &__text {
+            padding: 0px 0px 15px 0px;
+        }
+    }
+}

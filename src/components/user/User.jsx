@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, animateScroll as scroll } from "react-scroll";
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsPostActive } from '../../reducers/postsReducer';
 import { getUserPosts } from '../actions/users';
@@ -20,7 +21,7 @@ const User = (props) => {
             <p className="user__email">{user.email}</p>
             <p className="user__phone">{user.phone}</p>
             <p className="user__zipcode">{user.address.zipcode}</p>
-            <button onClick={()=> getAllUserPosts()} className="user__btn">View all user post</button>
+            <Link to='post-area' smooth={true} onClick={()=> getAllUserPosts()} className="user__btn">View all user post</Link>
         </article>
     );
 };

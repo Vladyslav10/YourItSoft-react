@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import arLeft from '../../assets/left.png';
+import arRight from '../../assets/right.png';
 import { useDispatch, useSelector } from "react-redux";
 import { useSearch } from "../../custom-hooks/useSortAndSearch";
 import { setIsPostActive } from "../../reducers/postsReducer";
@@ -41,9 +43,9 @@ const Main = () => {
     <main className="main">
       <div className="main__container container">
         {isFetchError && (
-          <div className="alert alert-danger" role="alert">
+          <p className="alert alert-danger" role="alert">
             Ooops something wrong! Please reload page!
-          </div>
+          </p>
         )}
         <div className={isPostsActive ? "main__row small" : "main__row"}>
             <div className="main__column main__column-users">
@@ -53,11 +55,11 @@ const Main = () => {
                     : searchedPost.map(user => <User key={user.id} user={user}/>)
                 }
             </div>
-            <div className={ isPostsActive ? "main__column main__column-posts" : "main__column main__column-posts disabled"}>
+            <div id="post-area" className={ isPostsActive ? "main__column main__column-posts" : "main__column main__column-posts disabled"}>
               {isPostFetchError && (
-                <div className="alert alert-danger" role="alert">
+                <p className="alert alert-danger" role="alert">
                   Posts not loaded, please try again later! 
-                </div>
+                </p>
               )}
               {isPostFetching
                 ? <div className="loader"></div>
@@ -67,7 +69,16 @@ const Main = () => {
             </div>
         </div>
         {!isFetching && (
-          <div className="main__bottom"></div>
+          <div className="main__bottom">
+            <div className="main__bottom-prev">
+              <img src={arLeft} alt="arrow left"/>
+              <p className="main__bottom-text">Previous</p>
+            </div>
+            <div className="main__bottom-next">
+              <p className="main__bottom-text">Next</p>
+              <img src={arRight} alt="arrow right"/>
+            </div>
+          </div>
         )}
       </div>
     </main>
